@@ -1,244 +1,553 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacie Badr El Kheir — Dr. El Mahdi Nih, Meknès</title>
-    <meta name="description" content="Pharmacie Badr El Kheir — Lotissement Badr, Toulal, Meknès. Conseil pharmaceutique, parapharmacie, dermo-cosmétique. Tél: 05 35 53 18 18">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pharmacie Badr El Kheir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-    <!-- Language Modal -->
-    <div id="language-modal" class="modal-overlay">
-        <div class="modal-content">
-            <h2>Pharmacie<br>Badr El Kheir</h2>
-            <p>Choisissez votre langue / اختر لغتك</p>
-            <div class="lang-buttons">
-                <button class="lang-btn" onclick="setLanguage('fr')">Français</button>
-                <button class="lang-btn alt" onclick="setLanguage('ar')">العربية</button>
-            </div>
-        </div>
+  <!-- Language Selection Overlay -->
+  <div id="lang-overlay" class="lang-overlay" role="dialog" aria-label="Language Selection">
+    <div class="lang-card">
+      <div class="lang-logo">
+        <div class="lang-crescent">☽</div>
+        <h1>Pharmacie Badr El Kheir</h1>
+        <p class="lang-subtitle">فارماسي بدر الخير</p>
+      </div>
+      <p class="lang-prompt">Choisissez votre langue / اختر لغتك</p>
+      <div class="lang-buttons">
+        <button class="lang-btn" onclick="setLanguage('fr')" lang="fr">
+          <span class="lang-flag">🇫🇷</span>
+          <span>Français</span>
+        </button>
+        <button class="lang-btn" onclick="setLanguage('ar')" lang="ar">
+          <span class="lang-flag">🇲🇦</span>
+          <span>العربية</span>
+        </button>
+      </div>
     </div>
+  </div>
 
-    <!-- Garde Banner -->
-    <div id="garde-banner" class="garde-banner hidden">
-        <i class="fas fa-star-of-life"></i>
-        <span data-i18n="gardeBanner">Nous sommes de garde aujourd'hui !</span>
-        &nbsp;—&nbsp;
-        <a href="tel:+212535531818" style="color:inherit;font-weight:700;">05 35 53 18 18</a>
-    </div>
+  <!-- Main Site -->
+  <div id="site" class="site-hidden">
 
-    <!-- Floating Call Button -->
-    <a href="tel:+212535531818" class="float-call" id="float-call">
-        <i class="fas fa-phone"></i>
-        <span>05 35 53 18 18</span>
-    </a>
+    <!-- HEADER -->
+    <header id="header">
+      <div class="header-inner container">
+        <a href="#home" class="logo" onclick="scrollToSection('home')">
+          <span class="logo-crescent">☽</span>
+          <div class="logo-text">
+            <span class="logo-main" data-fr="Pharmacie Badr El Kheir" data-ar="فارماسي بدر الخير">Pharmacie Badr El Kheir</span>
+            <span class="logo-sub" data-fr="Votre santé, notre priorité" data-ar="صحتكم أولويتنا">Votre santé, notre priorité</span>
+          </div>
+        </a>
 
-    <!-- Header -->
-    <header>
-        <div class="header-inner">
-            <a href="#" class="logo">
-                <div class="logo-name">Pharmacie <span>Badr El Kheir</span></div>
-                <div class="logo-sub">Lotissement Badr · Toulal · Meknès</div>
-            </a>
-            <nav class="nav-actions">
-                <a href="tel:+212535531818" class="btn-call-header">
-                    <i class="fas fa-phone"></i>
-                    <span data-i18n="callUs">Appelez-nous</span>
-                </a>
-                <button class="btn-lang" onclick="toggleLanguage()">
-                    <i class="fas fa-globe"></i>
-                    <span id="current-lang">AR</span>
-                </button>
-            </nav>
+        <nav id="main-nav" aria-label="Navigation principale">
+          <ul>
+            <li><a href="#home" onclick="scrollToSection('home')" data-fr="Accueil" data-ar="الرئيسية">Accueil</a></li>
+            <li><a href="#about" onclick="scrollToSection('about')" data-fr="Notre Pharmacie" data-ar="عن الصيدلية">Notre Pharmacie</a></li>
+            <li><a href="#services" onclick="scrollToSection('services')" data-fr="Services" data-ar="الخدمات">Services</a></li>
+            <li><a href="#parapharmacie" onclick="scrollToSection('parapharmacie')" data-fr="Parapharmacie" data-ar="شبه الصيدلانية">Parapharmacie</a></li>
+            <li><a href="#blog" onclick="scrollToSection('blog')" data-fr="Conseils Santé" data-ar="نصائح صحية">Conseils Santé</a></li>
+            <li><a href="#contact" onclick="scrollToSection('contact')" data-fr="Contact" data-ar="اتصل بنا">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button id="lang-toggle" class="lang-toggle" onclick="toggleLanguage()" title="Changer de langue / تغيير اللغة">
+            <span id="lang-label">FR</span>
+          </button>
+          <button id="font-size-toggle" class="font-size-btn" onclick="cycleFontSize()" title="Taille du texte / حجم الخط" aria-label="Ajuster la taille du texte">A</button>
+          <button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
         </div>
+      </div>
     </header>
 
-    <main>
-
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <div class="hero-eyebrow">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Lotissement Badr, Toulal — Meknès
-                    </div>
-                    <h1 data-i18n="heroTitle">Votre santé,<br>notre priorité<br>au quotidien</h1>
-                    <p class="hero-sub" data-i18n="heroSubtitle">Conseils experts, parapharmacie, et accompagnement personnalisé.</p>
-                    <div class="hero-cta-group">
-                        <a href="tel:+212535531818" class="btn-hero-call">
-                            <i class="fas fa-phone-alt"></i>
-                            <span class="phone-num">05 35 53 18 18</span>
-                        </a>
-                        <a href="https://maps.app.goo.gl/JncfxXGN9u2rXiaF7" target="_blank" class="btn-hero-dir">
-                            <i class="fas fa-directions"></i>
-                            <span data-i18n="visitUs">Obtenir l'itinéraire</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="hero-card">
-                    <div class="hero-hours-title">
-                        <i class="far fa-clock"></i>
-                        <span data-i18n="hoursTitle">Horaires d'Ouverture</span>
-                    </div>
-                    <div class="hero-hour-row">
-                        <span data-i18n="monFri">Lun – Ven</span>
-                        <span>09:00–13:00<br>15:30–20:30</span>
-                    </div>
-                    <div class="hero-hour-row">
-                        <span data-i18n="saturday">Samedi</span>
-                        <span>09:00–13:00</span>
-                    </div>
-                    <div class="hero-hour-row closed-day">
-                        <span data-i18n="sunday">Dimanche</span>
-                        <span data-i18n="closedText">Fermé</span>
-                    </div>
-                    <a href="tel:+212535531818" class="hero-phone-strip">
-                        <small data-i18n="callUs">Appelez-nous</small>
-                        05 35 53 18 18
-                    </a>
-                </div>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-bg"></div>
+      <div class="seasonal-banner" id="seasonal-banner"></div>
+      <div class="container hero-content">
+        <div class="hero-text">
+          <div class="status-badge" id="status-badge"></div>
+          <h2 class="hero-headline" data-fr="Votre santé entre de bonnes mains" data-ar="صحتكم في أيدٍ أمينة">Votre santé entre de bonnes mains</h2>
+          <p class="hero-sub" data-fr="Pharmacie de proximité à votre service depuis des années. Expertise, conseils personnalisés et produits de qualité." data-ar="صيدلية في خدمتكم منذ سنوات. خبرة، نصائح مخصصة ومنتجات عالية الجودة.">Pharmacie de proximité à votre service depuis des années. Expertise, conseils personnalisés et produits de qualité.</p>
+          <div class="hero-cta">
+            <a href="tel:0535531818" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.32.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 7a1 1 0 011-1h3.5a1 1 0 011 1c0 1.26.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+              <span data-fr="Nous appeler" data-ar="اتصل بنا">Nous appeler</span>
+            </a>
+            <a href="#contact" onclick="scrollToSection('contact')" class="btn btn-outline">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span data-fr="Nous trouver" data-ar="موقعنا">Nous trouver</span>
+            </a>
+          </div>
+          <div class="hero-hours">
+            <div class="hours-item">
+              <span class="hours-label" data-fr="Lun – Ven" data-ar="الإثنين – الجمعة">Lun – Ven</span>
+              <span class="hours-value">9h–13h &amp; 15h30–20h30</span>
             </div>
-        </section>
-
-        <!-- Trust Strip -->
-        <div class="trust-strip">
-            <div class="trust-inner container">
-                <div class="trust-item">
-                    <div class="trust-num">6j/7</div>
-                    <div class="trust-label">Ouvert</div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-num">+5 ans</div>
-                    <div class="trust-label">d'expérience</div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-num">Dr.</div>
-                    <div class="trust-label">Conseil Expert</div>
-                </div>
-                <div class="trust-item">
-                    <div class="trust-num">∞</div>
-                    <div class="trust-label">Confidentialité</div>
-                </div>
+            <div class="hours-divider"></div>
+            <div class="hours-item">
+              <span class="hours-label" data-fr="Samedi" data-ar="السبت">Samedi</span>
+              <span class="hours-value">9h–13h</span>
             </div>
+            <div class="hours-divider"></div>
+            <div class="hours-item">
+              <span class="hours-label" data-fr="Dimanche" data-ar="الأحد">Dimanche</span>
+              <span class="hours-value closed-text" data-fr="Fermé" data-ar="مغلق">Fermé</span>
+            </div>
+          </div>
         </div>
-
-        <!-- About -->
-        <section class="about" id="about">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text">
-                        <h2 data-i18n="aboutTitle">À Propos<br>de Nous</h2>
-                        <p data-i18n="aboutText1">Fondée sur des valeurs d'écoute et d'empathie, la Pharmacie Badr El Kheir est votre partenaire santé de confiance. Nous nous engageons à vous fournir des soins de qualité, des conseils précis et un service confidentiel.</p>
-                        <p data-i18n="aboutText2">Dirigée par le <strong>Dr. El Mahdi Nih</strong>, notre équipe met un point d'honneur à vous accompagner dans vos traitements médicaux et votre bien-être général.</p>
-                        <a href="tel:+212535531818" class="about-cta">
-                            <i class="fas fa-phone"></i>
-                            <span data-i18n="callUs">Appelez-nous</span>
-                        </a>
-                    </div>
-                    <div class="doctor-portrait">
-                        <img src="assets/images/pharmacist.jpg" alt="Dr. El Mahdi Nih, Pharmacien">
-                        <div class="doctor-caption">
-                            <div class="doc-name">Dr. El Mahdi Nih</div>
-                            <div class="doc-title">Docteur en Pharmacie</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section class="services">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-eyebrow">Ce que nous offrons</span>
-                    <h2 data-i18n="servicesTitle">Parapharmacie &amp; Services</h2>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-spa"></i></div>
-                        <h3 data-i18n="dermoTitle">Dermo-Cosmétique</h3>
-                        <p data-i18n="dermoDesc">Un large choix de produits pour le soin de la peau, des cheveux et l'hygiène quotidienne, adaptés à tous les types de peaux.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-baby"></i></div>
-                        <h3 data-i18n="babyTitle">Espace Bébé &amp; Maman</h3>
-                        <p data-i18n="babyDesc">Laits infantiles, soins pour bébés et accompagnement pour les jeunes mamans.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-                        <h3 data-i18n="healthTitle">Suivi Santé</h3>
-                        <p data-i18n="healthDesc">Prise de tension artérielle, conseils nutritionnels et orientation médicale par notre équipe.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon"><i class="fas fa-pills"></i></div>
-                        <h3 data-i18n="supplementsTitle">Compléments Alimentaires</h3>
-                        <p data-i18n="supplementsDesc">Vitamines, minéraux et phytothérapie pour booster votre immunité et votre vitalité.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Location & Hours -->
-        <section class="location" id="location">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-eyebrow">Nous trouver</span>
-                    <h2 data-i18n="contactTitle">Informations Pratiques</h2>
-                </div>
-                <div class="contact-grid">
-                    <div class="hours-card">
-                        <div class="hours-card-title">
-                            <i class="far fa-clock"></i>
-                            <span data-i18n="hoursTitle">Horaires d'Ouverture</span>
-                        </div>
-                        <div class="hours-item">
-                            <span class="day" data-i18n="monFri">Lundi – Vendredi</span>
-                            <span class="time">09:00–13:00<br>15:30–20:30</span>
-                        </div>
-                        <div class="hours-item">
-                            <span class="day" data-i18n="saturday">Samedi</span>
-                            <span class="time">09:00–13:00</span>
-                        </div>
-                        <div class="hours-item closed">
-                            <span class="day" data-i18n="sunday">Dimanche</span>
-                            <span class="time" data-i18n="closedText">Fermé</span>
-                        </div>
-                        <div class="phone-cta-block">
-                            <p data-i18n="callUs">Appelez-nous</p>
-                            <a href="tel:+212535531818">05 35 53 18 18</a>
-                        </div>
-                    </div>
-
-                    <div class="map-card">
-                        <a href="https://maps.app.goo.gl/JncfxXGN9u2rXiaF7" target="_blank" class="map-link">
-                            <div class="map-visual">
-                                <div class="map-pin"><i class="fas fa-map-marker-alt"></i></div>
-                                <div class="map-cta-text" data-i18n="openMap">Ouvrir sur Google Maps</div>
-                                <p class="map-sub" data-i18n="mapDesc">Cliquez ici pour l'itinéraire</p>
-                            </div>
-                            <div class="map-footer">
-                                <i class="fas fa-location-dot"></i>
-                                <span>Lotissement Badr, Toulal, Meknès</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="year"></span> <strong>Pharmacie Badr El Kheir</strong> — Dr. El Mahdi Nih · Meknès, Maroc</p>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-icon">⚕</div>
+            <div class="hero-card-stat">+15</div>
+            <div class="hero-card-label" data-fr="années d'expertise" data-ar="سنوات من الخبرة">années d'expertise</div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- GARDE SECTION -->
+    <section id="garde" class="garde-section">
+      <div class="container">
+        <div class="garde-inner">
+          <div class="garde-icon">🌙</div>
+          <div class="garde-text">
+            <h3 data-fr="Pharmacie de Garde" data-ar="الصيدلية المناوبة">Pharmacie de Garde</h3>
+            <p id="garde-msg" data-fr="Pour les urgences en dehors de nos heures d'ouverture, consultez la pharmacie de garde la plus proche." data-ar="للحالات الطارئة خارج ساعات العمل، تحقق من الصيدلية المناوبة الأقرب إليك.">Pour les urgences en dehors de nos heures d'ouverture, consultez la pharmacie de garde la plus proche.</p>
+            <!-- EDITABLE GARDE INFO: Update this section manually as needed -->
+            <div class="garde-info" id="garde-info">
+              <span class="garde-tag" data-fr="Info mise à jour manuellement" data-ar="معلومات محدثة يدوياً">Info mise à jour manuellement</span>
+              <strong id="garde-pharmacy-name">Pharmacie de Garde – À mettre à jour</strong>
+              <span id="garde-pharmacy-address">Adresse et numéro à compléter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-fr="Notre histoire" data-ar="قصتنا">Notre histoire</span>
+          <h2 data-fr="Une pharmacie au cœur de la communauté" data-ar="صيدلية في قلب المجتمع">Une pharmacie au cœur de la communauté</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-pharmacist">
+            <div class="pharmacist-photo-wrap">
+              <img src="assets/images/pharmacist.jpg" alt="Dr. El Mahdi Nih – Pharmacien Titulaire" class="pharmacist-photo" loading="lazy" />
+              <div class="pharmacist-badge">
+                <span data-fr="Pharmacien Titulaire" data-ar="الصيدلي المسؤول">Pharmacien Titulaire</span>
+              </div>
+            </div>
+            <div class="pharmacist-info">
+              <h3>Dr. El Mahdi Nih</h3>
+              <p class="pharmacist-title" data-fr="Docteur en Pharmacie" data-ar="دكتور في الصيدلة">Docteur en Pharmacie</p>
+              <p class="pharmacist-bio" data-fr="Fort d'une solide formation académique et d'une passion pour le bien-être de ses patients, le Docteur Nih s'est engagé à faire de la Pharmacie Badr El Kheir un lieu de santé de référence dans la région. Son approche allie rigueur scientifique, écoute attentive et conseils personnalisés." data-ar="بفضل تكوينه الأكاديمي المتين وشغفه برفاهية مرضاه، التزم الدكتور نيه بجعل صيدلية بدر الخير مرجعاً صحياً في المنطقة. يجمع نهجه بين الصرامة العلمية والإنصات الجيد والنصائح المخصصة.">Fort d'une solide formation académique et d'une passion pour le bien-être de ses patients, le Docteur Nih s'est engagé à faire de la Pharmacie Badr El Kheir un lieu de santé de référence dans la région. Son approche allie rigueur scientifique, écoute attentive et conseils personnalisés.</p>
+            </div>
+          </div>
+          <div class="about-values">
+            <h3 data-fr="Nos valeurs" data-ar="قيمنا">Nos valeurs</h3>
+            <div class="values-list">
+              <div class="value-item">
+                <div class="value-icon">🤝</div>
+                <div>
+                  <strong data-fr="Proximité & Écoute" data-ar="القرب والإنصات">Proximité &amp; Écoute</strong>
+                  <p data-fr="Chaque patient est unique. Nous prenons le temps de vous comprendre et de vous orienter avec bienveillance." data-ar="كل مريض فريد من نوعه. نأخذ الوقت الكافي لفهمكم وتوجيهكم بعناية.">Chaque patient est unique. Nous prenons le temps de vous comprendre et de vous orienter avec bienveillance.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-icon">🔒</div>
+                <div>
+                  <strong data-fr="Confidentialité" data-ar="السرية">Confidentialité</strong>
+                  <p data-fr="Vos informations médicales sont traitées avec une discrétion absolue, conformément à la déontologie pharmaceutique." data-ar="تُعالج معلوماتكم الطبية بسرية تامة وفق أخلاقيات المهنة الصيدلانية.">Vos informations médicales sont traitées avec une discrétion absolue, conformément à la déontologie pharmaceutique.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-icon">🎓</div>
+                <div>
+                  <strong data-fr="Expertise" data-ar="الخبرة">Expertise</strong>
+                  <p data-fr="Notre équipe se forme continuellement aux nouvelles molécules, aux protocoles de soins et aux innovations de santé." data-ar="يواصل فريقنا التكوين المستمر في المستجدات العلاجية وابتكارات الصحة.">Notre équipe se forme continuellement aux nouvelles molécules, aux protocoles de soins et aux innovations de santé.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="value-icon">❤️</div>
+                <div>
+                  <strong data-fr="Engagement communautaire" data-ar="الالتزام المجتمعي">Engagement communautaire</strong>
+                  <p data-fr="Ancrés dans notre quartier, nous participons activement à la santé publique locale et aux campagnes de prévention." data-ar="متجذرون في حيّنا، نشارك بفاعلية في الصحة العامة المحلية وحملات الوقاية.">Ancrés dans notre quartier, nous participons activement à la santé publique locale et aux campagnes de prévention.</p>
+                </div>
+              </div>
+            </div>
+            <div class="insurance-section">
+              <h4 data-fr="Assurances & Mutuelles acceptées" data-ar="التأمينات والصناديق الصحية المقبولة">Assurances &amp; Mutuelles acceptées</h4>
+              <div class="insurance-badges">
+                <span class="badge">CNSS</span>
+                <span class="badge">CNOPS</span>
+                <span class="badge">RMA Assurance</span>
+                <span class="badge">Wafa Assurance</span>
+                <span class="badge">AXA Maroc</span>
+                <span class="badge">MAMDA / MCMA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-fr="Ce que nous faisons" data-ar="ما نقدمه">Ce que nous faisons</span>
+          <h2 data-fr="Nos services de santé" data-ar="خدماتنا الصحية">Nos services de santé</h2>
+          <p class="section-desc" data-fr="Au-delà de la délivrance des médicaments, nous vous accompagnons dans votre parcours de santé au quotidien." data-ar="بعيداً عن صرف الأدوية، نرافقكم في رحلتكم الصحية اليومية.">Au-delà de la délivrance des médicaments, nous vous accompagnons dans votre parcours de santé au quotidien.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🩺</div>
+            <h3 data-fr="Mesure de la tension artérielle" data-ar="قياس ضغط الدم">Mesure de la tension artérielle</h3>
+            <p data-fr="Contrôle régulier de votre pression artérielle avec un appareil homologué et des conseils adaptés." data-ar="مراقبة منتظمة لضغط الدم بجهاز معتمد ونصائح ملائمة.">Contrôle régulier de votre pression artérielle avec un appareil homologué et des conseils adaptés.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🩸</div>
+            <h3 data-fr="Glycémie & Tests rapides" data-ar="قياس نسبة السكر والاختبارات السريعة">Glycémie &amp; Tests rapides</h3>
+            <p data-fr="Mesure du taux de glycémie capillaire et orientation vers le médecin si nécessaire." data-ar="قياس نسبة السكر في الدم الشعري والإحالة للطبيب عند الاقتضاء.">Mesure du taux de glycémie capillaire et orientation vers le médecin si nécessaire.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💉</div>
+            <h3 data-fr="Vaccinations" data-ar="التطعيمات">Vaccinations</h3>
+            <p data-fr="Administration des vaccins saisonniers (grippe, Covid-19) et du calendrier vaccinal sur prescription médicale." data-ar="تطبيق اللقاحات الموسمية (الإنفلونزا، كوفيد-19) وجدول التطعيم بوصفة طبية.">Administration des vaccins saisonniers (grippe, Covid-19) et du calendrier vaccinal sur prescription médicale.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🦴</div>
+            <h3 data-fr="Appareillage orthopédique" data-ar="الأجهزة التقويمية">Appareillage orthopédique</h3>
+            <p data-fr="Conseil et ajustement de genouillères, chevillères, ceintures lombaires, béquilles et cannes." data-ar="الإرشاد والتركيب لدعّامات الركبة والكاحل وأحزمة الظهر والعكازات.">Conseil et ajustement de genouillères, chevillères, ceintures lombaires, béquilles et cannes.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🌿</div>
+            <h3 data-fr="Conseils en nutrition" data-ar="الاستشارة الغذائية">Conseils en nutrition</h3>
+            <p data-fr="Accompagnement nutritionnel personnalisé : compléments alimentaires, régimes thérapeutiques et bien-être général." data-ar="مرافقة غذائية مخصصة: مكملات غذائية وأنظمة علاجية وعافية عامة.">Accompagnement nutritionnel personnalisé : compléments alimentaires, régimes thérapeutiques et bien-être général.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">✨</div>
+            <h3 data-fr="Conseils dermatologiques" data-ar="الاستشارة الجلدية">Conseils dermatologiques</h3>
+            <p data-fr="Orientation vers les soins adaptés à votre type de peau, traitement de l'acné, eczéma, cicatrisation." data-ar="التوجيه نحو العناية المناسبة لبشرتكم، علاج حب الشباب والإكزيما والندبات.">Orientation vers les soins adaptés à votre type de peau, traitement de l'acné, eczéma, cicatrisation.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🔔</div>
+            <h3 data-fr="Rappel de renouvellement" data-ar="تذكير بتجديد الوصفة">Rappel de renouvellement</h3>
+            <p data-fr="Service de rappel pour les patients chroniques : soyez alerté quand il est temps de renouveler votre ordonnance." data-ar="خدمة تذكير للمرضى المزمنين: كوّنوا على علم بموعد تجديد وصفتكم.">Service de rappel pour les patients chroniques : soyez alerté quand il est temps de renouveler votre ordonnance.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📦</div>
+            <h3 data-fr="Commande & Réservation" data-ar="الطلب والحجز">Commande &amp; Réservation</h3>
+            <p data-fr="Commandez par téléphone vos médicaments à l'avance. Votre commande sera prête à votre arrivée." data-ar="اطلبوا أدويتكم مسبقاً عبر الهاتف. ستكون طلبيتكم جاهزة عند وصولكم.">Commandez par téléphone vos médicaments à l'avance. Votre commande sera prête à votre arrivée.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REMINDER SIGNUP -->
+    <section id="reminder" class="reminder-section">
+      <div class="container">
+        <div class="reminder-inner">
+          <div class="reminder-content">
+            <h3 data-fr="Rappels de renouvellement d'ordonnance" data-ar="تذكير بتجديد الوصفة الطبية">Rappels de renouvellement d'ordonnance</h3>
+            <p data-fr="Vous souffrez d'une maladie chronique ? Ne manquez plus jamais votre traitement. Inscrivez-vous et nous vous appelons quand il est temps." data-ar="هل تعاني من مرض مزمن؟ لا تفوّت علاجك بعد الآن. سجّل وسنتصل بك في الوقت المناسب.">Vous souffrez d'une maladie chronique ? Ne manquez plus jamais votre traitement. Inscrivez-vous et nous vous appelons quand il est temps.</p>
+          </div>
+          <div class="reminder-form" id="reminder-form">
+            <input type="text" id="reminder-name" placeholder="" class="form-input" />
+            <input type="tel" id="reminder-phone" placeholder="" class="form-input" dir="auto" />
+            <button class="btn btn-primary" onclick="submitReminder()" data-fr="M'inscrire" data-ar="التسجيل">M'inscrire</button>
+          </div>
+          <div id="reminder-success" class="reminder-success" style="display:none">
+            <span>✓</span>
+            <p data-fr="Merci ! Nous vous contacterons bientôt." data-ar="شكراً! سنتصل بكم قريباً.">Merci ! Nous vous contacterons bientôt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARAPHARMACIE -->
+    <section id="parapharmacie" class="section para-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-fr="Notre boutique" data-ar="متجرنا">Notre boutique</span>
+          <h2 data-fr="Parapharmacie & Bien-être" data-ar="الشبه صيدلانية والعافية">Parapharmacie &amp; Bien-être</h2>
+          <p class="section-desc" data-fr="Une sélection rigoureuse de marques reconnues pour prendre soin de vous et de votre famille." data-ar="تشكيلة مختارة بعناية من علامات تجارية موثوقة للعناية بك وبعائلتك.">Une sélection rigoureuse de marques reconnues pour prendre soin de vous et de votre famille.</p>
+        </div>
+        <div class="promo-banner">
+          <span class="promo-tag" data-fr="Promotions du mois" data-ar="عروض الشهر">Promotions du mois</span>
+          <p data-fr="Jusqu'à -30% sur une sélection de crèmes solaires et de compléments alimentaires. En pharmacie uniquement." data-ar="خصم يصل إلى 30% على تشكيلة من واقيات الشمس والمكملات الغذائية. في الصيدلية فقط.">Jusqu'à -30% sur une sélection de crèmes solaires et de compléments alimentaires. En pharmacie uniquement.</p>
+        </div>
+        <div class="para-categories">
+          <div class="para-card">
+            <div class="para-icon">🌸</div>
+            <h3 data-fr="Dermo-Cosmétique" data-ar="الجماليات الجلدية">Dermo-Cosmétique</h3>
+            <p data-fr="Soins visage, corps, solaires & capillaires. Marques dermatologiques : La Roche-Posay, Avène, Ducray, Bioderma, Vichy." data-ar="عناية بالوجه والجسم والشعر والشمس. علامات جلدية: La Roche-Posay، Avène، Ducray، Bioderma، Vichy.">Soins visage, corps, solaires &amp; capillaires. Marques : La Roche-Posay, Avène, Ducray, Bioderma, Vichy.</p>
+            <ul class="para-list">
+              <li data-fr="Crèmes hydratantes & anti-âge" data-ar="كريمات مرطبة ومضادة للشيخوخة">Crèmes hydratantes &amp; anti-âge</li>
+              <li data-fr="Protection solaire SPF 30–50+" data-ar="واقيات الشمس SPF 30–50+">Protection solaire SPF 30–50+</li>
+              <li data-fr="Soins pour peaux sensibles" data-ar="عناية بالبشرة الحساسة">Soins pour peaux sensibles</li>
+              <li data-fr="Shampoings traitants" data-ar="شامبو علاجي">Shampoings traitants</li>
+            </ul>
+          </div>
+          <div class="para-card">
+            <div class="para-icon">👶</div>
+            <h3 data-fr="Maman & Bébé" data-ar="الأم والطفل">Maman &amp; Bébé</h3>
+            <p data-fr="Tout pour la grossesse, l'allaitement et les premières années de bébé. Produits certifiés et testés dermatologiquement." data-ar="كل ما يلزم للحمل والرضاعة والسنوات الأولى للطفل. منتجات معتمدة ومختبرة جلدياً.">Tout pour la grossesse, l'allaitement et les premières années de bébé.</p>
+            <ul class="para-list">
+              <li data-fr="Laits infantiles & céréales" data-ar="حليب الأطفال والحبوب">Laits infantiles &amp; céréales</li>
+              <li data-fr="Soins bébé (Mustela, Bébé Cadum)" data-ar="عناية الطفل (Mustela، Bébé Cadum)">Soins bébé (Mustela, Bébé Cadum)</li>
+              <li data-fr="Compléments grossesse" data-ar="مكملات الحمل">Compléments grossesse</li>
+              <li data-fr="Thermomètres & tire-laits" data-ar="مقاييس الحرارة وشافطات الحليب">Thermomètres &amp; tire-laits</li>
+            </ul>
+          </div>
+          <div class="para-card">
+            <div class="para-icon">💊</div>
+            <h3 data-fr="Vitamines & Compléments" data-ar="الفيتامينات والمكملات">Vitamines &amp; Compléments</h3>
+            <p data-fr="Renforcez vos défenses naturelles avec notre gamme complète de vitamines, minéraux et compléments alimentaires." data-ar="عززوا مناعتكم الطبيعية بمجموعتنا الشاملة من الفيتامينات والمعادن والمكملات.">Renforcez vos défenses naturelles avec notre gamme complète.</p>
+            <ul class="para-list">
+              <li data-fr="Vitamine C, D, Zinc" data-ar="فيتامين C، D، الزنك">Vitamine C, D, Zinc</li>
+              <li data-fr="Oméga-3 & Magnésium" data-ar="أوميغا-3 والمغنيسيوم">Oméga-3 &amp; Magnésium</li>
+              <li data-fr="Probiotiques & Prébiotiques" data-ar="البروبيوتيك والبريبيوتيك">Probiotiques &amp; Prébiotiques</li>
+              <li data-fr="Cure minceur & détox" data-ar="كورات التخسيس والتطهير">Cure minceur &amp; détox</li>
+            </ul>
+          </div>
+          <div class="para-card">
+            <div class="para-icon">🩹</div>
+            <h3 data-fr="Premiers Secours & Dispositifs" data-ar="الإسعافات الأولية والأجهزة">Premiers Secours &amp; Dispositifs</h3>
+            <p data-fr="Matériel médical homologué pour la maison : surveillance, mobilité, premiers soins." data-ar="أجهزة طبية معتمدة للمنزل: مراقبة، حركة، إسعافات أولية.">Matériel médical homologué pour la maison : surveillance, mobilité, premiers soins.</p>
+            <ul class="para-list">
+              <li data-fr="Tensiomètres & glucomètres" data-ar="أجهزة قياس الضغط والسكر">Tensiomètres &amp; glucomètres</li>
+              <li data-fr="Pansements & antiseptiques" data-ar="الضمادات ومطهرات الجروح">Pansements &amp; antiseptiques</li>
+              <li data-fr="Cannes & déambulateurs" data-ar="العصي والمشّايات">Cannes &amp; déambulateurs</li>
+              <li data-fr="Bas de contention" data-ar="جوارب الضغط">Bas de contention</li>
+            </ul>
+          </div>
+          <div class="para-card">
+            <div class="para-icon">🦷</div>
+            <h3 data-fr="Hygiène Bucco-Dentaire" data-ar="صحة الفم والأسنان">Hygiène Bucco-Dentaire</h3>
+            <p data-fr="Solutions professionnelles pour une hygiène orale optimale au quotidien." data-ar="حلول احترافية لنظافة الفم المثلى يومياً.">Solutions professionnelles pour une hygiène orale optimale au quotidien.</p>
+            <ul class="para-list">
+              <li data-fr="Bains de bouche & dentifrices spécialisés" data-ar="غسولات الفم ومعاجين الأسنان المتخصصة">Bains de bouche &amp; dentifrices spécialisés</li>
+              <li data-fr="Brosses à dents électriques" data-ar="فرش الأسنان الكهربائية">Brosses à dents électriques</li>
+              <li data-fr="Soins des gencives" data-ar="عناية باللثة">Soins des gencives</li>
+              <li data-fr="Appareils dentaires & fils" data-ar="أجهزة الأسنان والخيط الطبي">Appareils dentaires &amp; fils</li>
+            </ul>
+          </div>
+          <div class="para-card">
+            <div class="para-icon">🏋️</div>
+            <h3 data-fr="Sport & Récupération" data-ar="الرياضة والتعافي">Sport &amp; Récupération</h3>
+            <p data-fr="Compléments sportifs, soins musculaires et équipements de récupération pour rester au top." data-ar="مكملات رياضية وعناية عضلية ومعدات تعافٍ للبقاء في أفضل حال.">Compléments sportifs, soins musculaires et équipements de récupération.</p>
+            <ul class="para-list">
+              <li data-fr="Protéines & acides aminés" data-ar="البروتينات والأحماض الأمينية">Protéines &amp; acides aminés</li>
+              <li data-fr="Bandes de contention sportive" data-ar="أشرطة الضغط الرياضية">Bandes de contention sportive</li>
+              <li data-fr="Gels & crèmes chauffants" data-ar="مراهم وجل التدفئة">Gels &amp; crèmes chauffants</li>
+              <li data-fr="Électrostimulateurs TENS" data-ar="أجهزة التحفيز الكهربائي TENS">Électrostimulateurs TENS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" class="section blog-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-fr="De nos pharmaciens" data-ar="من صيادلتنا">De nos pharmaciens</span>
+          <h2 data-fr="Conseils Santé" data-ar="نصائح صحية">Conseils Santé</h2>
+          <p class="section-desc" data-fr="Des informations fiables pour mieux comprendre votre santé et adopter les bons réflexes." data-ar="معلومات موثوقة لفهم صحتكم بشكل أفضل واكتساب العادات الصحيحة.">Des informations fiables pour mieux comprendre votre santé et adopter les bons réflexes.</p>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card featured">
+            <div class="blog-tag" data-fr="Allergies & Saisons" data-ar="الحساسية والمواسم">Allergies &amp; Saisons</div>
+            <h3 data-fr="Gérer les allergies printanières : conseils de votre pharmacien" data-ar="التعامل مع حساسية الربيع: نصائح صيدلانيكم">Gérer les allergies printanières : conseils de votre pharmacien</h3>
+            <p data-fr="Le rhume des foins touche des millions de personnes chaque printemps. Antihistaminiques, lavages nasaux, conseils de terrain… votre pharmacien vous guide pour traverser la saison sereinement." data-ar="حمى القش تصيب الملايين كل ربيع. مضادات الهيستامين وغسيل الأنف ونصائح ميدانية... صيدلانيكم يرشدكم لعبور الموسم بسلام.">Le rhume des foins touche des millions de personnes chaque printemps. Antihistaminiques, lavages nasaux, conseils de terrain… votre pharmacien vous guide.</p>
+            <span class="blog-date" data-fr="Conseils printemps" data-ar="نصائح الربيع">Conseils printemps</span>
+          </article>
+          <article class="blog-card">
+            <div class="blog-tag" data-fr="Dermatologie" data-ar="الجلدية">Dermatologie</div>
+            <h3 data-fr="Routine skincare pour l'hiver : les gestes essentiels" data-ar="روتين العناية بالبشرة شتاءً: الخطوات الأساسية">Routine skincare pour l'hiver : les gestes essentiels</h3>
+            <p data-fr="Le froid et le chauffage assèchent la peau. Découvrez les actifs à privilégier et les erreurs à éviter pour une peau hydratée tout l'hiver." data-ar="البرد والتدفئة يجففان البشرة. تعرفوا على المكونات الأنسب والأخطاء الواجب تفاديها لبشرة رطبة طوال الشتاء.">Le froid et le chauffage assèchent la peau. Découvrez les actifs à privilégier pour une peau hydratée.</p>
+            <span class="blog-date" data-fr="Conseils hiver" data-ar="نصائح الشتاء">Conseils hiver</span>
+          </article>
+          <article class="blog-card">
+            <div class="blog-tag" data-fr="Maladies chroniques" data-ar="الأمراض المزمنة">Maladies chroniques</div>
+            <h3 data-fr="Mieux comprendre votre tension artérielle" data-ar="فهم ضغط الدم بشكل أفضل">Mieux comprendre votre tension artérielle</h3>
+            <p data-fr="Chiffres, normes, facteurs de risque : tout ce que vous devez savoir pour surveiller votre pression artérielle efficacement et dialoguer avec votre médecin." data-ar="الأرقام والمعايير وعوامل الخطر: كل ما تحتاج معرفته لمراقبة ضغط دمكم بفعالية والتواصل مع طبيبكم.">Chiffres, normes, facteurs de risque : tout pour surveiller votre pression artérielle efficacement.</p>
+            <span class="blog-date" data-fr="Santé cardiovasculaire" data-ar="صحة القلب والأوعية">Santé cardiovasculaire</span>
+          </article>
+          <article class="blog-card">
+            <div class="blog-tag" data-fr="Nutrition" data-ar="التغذية">Nutrition</div>
+            <h3 data-fr="Vitamine D : pourquoi en manque-t-on et comment y remédier ?" data-ar="فيتامين د: لماذا يعاني كثيرون من نقصه وكيف نعالج ذلك؟">Vitamine D : pourquoi en manque-t-on et comment y remédier ?</h3>
+            <p data-fr="La carence en vitamine D est très répandue, notamment en hiver. Symptômes, sources alimentaires, supplémentation : notre pharmacien fait le point." data-ar="نقص فيتامين د شائع جداً، خاصة في الشتاء. الأعراض والمصادر الغذائية والتكميل: صيدلانيكم يوضح الصورة.">La carence en vitamine D est très répandue, notamment en hiver. Notre pharmacien fait le point.</p>
+            <span class="blog-date" data-fr="Micronutrition" data-ar="التغذية الدقيقة">Micronutrition</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow" data-fr="Venez nous voir" data-ar="زورونا">Venez nous voir</span>
+          <h2 data-fr="Contact & Localisation" data-ar="التواصل والموقع">Contact &amp; Localisation</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <strong data-fr="Adresse" data-ar="العنوان">Adresse</strong>
+                <p>Pharmacie Badr El Kheir, Rabat, Maroc</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <strong data-fr="Téléphone" data-ar="الهاتف">Téléphone</strong>
+                <p><a href="tel:0535531818" class="contact-link">05 35 53 18 18</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🕐</div>
+              <div>
+                <strong data-fr="Horaires" data-ar="أوقات العمل">Horaires</strong>
+                <div class="hours-table">
+                  <div class="hours-row">
+                    <span data-fr="Lundi – Vendredi" data-ar="الإثنين – الجمعة">Lundi – Vendredi</span>
+                    <span>9h–13h / 15h30–20h30</span>
+                  </div>
+                  <div class="hours-row">
+                    <span data-fr="Samedi" data-ar="السبت">Samedi</span>
+                    <span>9h–13h</span>
+                  </div>
+                  <div class="hours-row closed">
+                    <span data-fr="Dimanche" data-ar="الأحد">Dimanche</span>
+                    <span data-fr="Fermé" data-ar="مغلق">Fermé</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="tel:0535531818" class="btn btn-primary btn-full">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.32.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C9.39 21 3 14.61 3 7a1 1 0 011-1h3.5a1 1 0 011 1c0 1.26.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+              <span data-fr="Appeler maintenant : 05 35 53 18 18" data-ar="اتصل الآن: 05 35 53 18 18">Appeler maintenant : 05 35 53 18 18</span>
+            </a>
+          </div>
+          <div class="map-container">
+            <iframe
+              src="https://maps.google.com/maps?q=Pharmacie+Badr+El+Kheir+Rabat&output=embed&z=16"
+              width="100%"
+              height="400"
+              style="border:0; border-radius: 16px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localisation Pharmacie Badr El Kheir">
+            </iframe>
+            <a href="https://maps.app.goo.gl/JncfxXGN9u2rXiaF7" target="_blank" rel="noopener noreferrer" class="map-link">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <span data-fr="Ouvrir dans Google Maps" data-ar="فتح في خرائط جوجل">Ouvrir dans Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="logo-crescent">☽</span>
+              <div>
+                <span class="footer-name">Pharmacie Badr El Kheir</span>
+                <span class="footer-tagline" data-fr="Votre santé, notre priorité" data-ar="صحتكم أولويتنا">Votre santé, notre priorité</span>
+              </div>
+            </div>
+            <p class="footer-desc" data-fr="Pharmacie de proximité engagée dans votre bien-être, à Rabat." data-ar="صيدلية حيّة ملتزمة برفاهيتكم في الرباط.">Pharmacie de proximité engagée dans votre bien-être, à Rabat.</p>
+          </div>
+          <div class="footer-col">
+            <h4 data-fr="Liens rapides" data-ar="روابط سريعة">Liens rapides</h4>
+            <ul>
+              <li><a href="#home" onclick="scrollToSection('home')" data-fr="Accueil" data-ar="الرئيسية">Accueil</a></li>
+              <li><a href="#about" onclick="scrollToSection('about')" data-fr="Notre Pharmacie" data-ar="عن الصيدلية">Notre Pharmacie</a></li>
+              <li><a href="#services" onclick="scrollToSection('services')" data-fr="Services" data-ar="الخدمات">Services</a></li>
+              <li><a href="#parapharmacie" onclick="scrollToSection('parapharmacie')" data-fr="Parapharmacie" data-ar="شبه الصيدلانية">Parapharmacie</a></li>
+              <li><a href="#blog" onclick="scrollToSection('blog')" data-fr="Conseils Santé" data-ar="نصائح صحية">Conseils Santé</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-fr="Contact" data-ar="اتصل بنا">Contact</h4>
+            <ul>
+              <li><a href="tel:0535531818">05 35 53 18 18</a></li>
+              <li><span data-fr="Rabat, Maroc" data-ar="الرباط، المغرب">Rabat, Maroc</span></li>
+              <li><a href="#contact" onclick="scrollToSection('contact')" data-fr="Voir sur la carte" data-ar="عرض على الخريطة">Voir sur la carte</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-fr="Légal" data-ar="قانوني">Légal</h4>
+            <ul>
+              <li><a href="#privacy" onclick="showPrivacy()" data-fr="Politique de confidentialité" data-ar="سياسة الخصوصية">Politique de confidentialité</a></li>
+              <li><a href="#mentions" onclick="showMentions()" data-fr="Mentions légales" data-ar="الإشارات القانونية">Mentions légales</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p data-fr="© 2025 Pharmacie Badr El Kheir. Tous droits réservés. Toute vente de médicaments est soumise à prescription médicale valide." data-ar="© 2025 فارماسي بدر الخير. جميع الحقوق محفوظة. بيع الأدوية مشروط بوصفة طبية سارية.">© 2025 Pharmacie Badr El Kheir. Tous droits réservés. Toute vente de médicaments est soumise à prescription médicale valide.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="js/main.js"></script>
+  </div><!-- /site -->
+
+  <!-- PRIVACY MODAL -->
+  <div id="privacy-modal" class="modal" role="dialog" aria-modal="true" style="display:none">
+    <div class="modal-overlay" onclick="closeModal('privacy-modal')"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('privacy-modal')" aria-label="Fermer">✕</button>
+      <h2 data-fr="Politique de Confidentialité" data-ar="سياسة الخصوصية">Politique de Confidentialité</h2>
+      <div data-fr-content data-ar-content class="modal-body">
+        <p data-fr="La Pharmacie Badr El Kheir s'engage à protéger la vie privée de ses patients et visiteurs conformément à la législation marocaine sur la protection des données personnelles (Loi 09-08)." data-ar="تلتزم صيدلية بدر الخير بحماية خصوصية مرضاها وزوارها وفق القانون المغربي لحماية البيانات الشخصية (القانون 09-08).">La Pharmacie Badr El Kheir s'engage à protéger la vie privée de ses patients et visiteurs conformément à la législation marocaine sur la protection des données personnelles (Loi 09-08).</p>
+        <h3 data-fr="Données collectées" data-ar="البيانات المجمعة">Données collectées</h3>
+        <p data-fr="Nous collectons uniquement les informations nécessaires à la dispensation de médicaments et à la fourniture de nos services (nom, téléphone pour les rappels). Aucune donnée n'est partagée avec des tiers à des fins commerciales." data-ar="نجمع فقط المعلومات اللازمة لصرف الأدوية وتقديم خدماتنا (الاسم والهاتف للتذكير). لا تُشارك أي بيانات مع أطراف ثالثة لأغراض تجارية.">Nous collectons uniquement les informations nécessaires à la dispensation de médicaments et à la fourniture de nos services. Aucune donnée n'est partagée avec des tiers à des fins commerciales.</p>
+        <h3 data-fr="Confidentialité médicale" data-ar="السرية الطبية">Confidentialité médicale</h3>
+        <p data-fr="Toutes les informations médicales vous concernant sont couvertes par le secret professionnel pharmaceutique. Elles ne peuvent être divulguées à quiconque sans votre consentement explicite." data-ar="جميع معلوماتكم الطبية مشمولة بالسر المهني الصيدلاني. لا يمكن الإفصاح عنها لأي طرف دون موافقتكم الصريحة.">Toutes les informations médicales vous concernant sont couvertes par le secret professionnel pharmaceutique.</p>
+        <h3 data-fr="Vos droits" data-ar="حقوقكم">Vos droits</h3>
+        <p data-fr="Conformément à la Loi 09-08, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous par téléphone au 05 35 53 18 18." data-ar="وفق القانون 09-08، يحق لكم الوصول إلى بياناتكم وتصحيحها وحذفها. لممارسة هذه الحقوق، اتصلوا بنا على 05 35 53 18 18.">Conformément à la Loi 09-08, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Contactez-nous au 05 35 53 18 18.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENTIONS MODAL -->
+  <div id="mentions-modal" class="modal" role="dialog" aria-modal="true" style="display:none">
+    <div class="modal-overlay" onclick="closeModal('mentions-modal')"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('mentions-modal')" aria-label="Fermer">✕</button>
+      <h2 data-fr="Mentions Légales" data-ar="الإشارات القانونية">Mentions Légales</h2>
+      <div class="modal-body">
+        <p><strong data-fr="Raison sociale" data-ar="الاسم التجاري">Raison sociale</strong>: Pharmacie Badr El Kheir</p>
+        <p><strong data-fr="Pharmacien Titulaire" data-ar="الصيدلي المسؤول">Pharmacien Titulaire</strong>: Dr. El Mahdi Nih</p>
+        <p><strong data-fr="Téléphone" data-ar="الهاتف">Téléphone</strong>: 05 35 53 18 18</p>
+        <p><strong data-fr="Localisation" data-ar="الموقع">Localisation</strong>: Rabat, Maroc</p>
+        <p data-fr="Cette pharmacie est soumise à la réglementation pharmaceutique marocaine et opère sous la supervision de l'Ordre National des Pharmaciens du Maroc." data-ar="تخضع هذه الصيدلية للتنظيم الصيدلاني المغربي وتعمل تحت إشراف نقابة الصيادلة الوطنية بالمغرب.">Cette pharmacie est soumise à la réglementation pharmaceutique marocaine et opère sous la supervision de l'Ordre National des Pharmaciens du Maroc.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
