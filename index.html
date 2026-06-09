@@ -3,89 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacie Badr El Kheir</title>
+    <title>Pharmacie Badr El Kheir — Dr. El Mahdi Nih, Meknès</title>
+    <meta name="description" content="Pharmacie Badr El Kheir — Lotissement Badr, Toulal, Meknès. Conseil pharmaceutique, parapharmacie, dermo-cosmétique. Tél: 05 35 53 18 18">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Language Selection Modal (Shows on first visit) -->
+    <!-- Language Modal -->
     <div id="language-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2>Welcome / مرحباً</h2>
-            <p>Please select your language / المرجو اختيار لغتك</p>
+            <h2>Pharmacie<br>Badr El Kheir</h2>
+            <p>Choisissez votre langue / اختر لغتك</p>
             <div class="lang-buttons">
-                <button onclick="setLanguage('fr')">Français</button>
-                <button onclick="setLanguage('ar')">العربية</button>
+                <button class="lang-btn" onclick="setLanguage('fr')">Français</button>
+                <button class="lang-btn alt" onclick="setLanguage('ar')">العربية</button>
             </div>
         </div>
     </div>
 
-    <!-- Pharmacie de Garde Banner -->
+    <!-- Garde Banner -->
     <div id="garde-banner" class="garde-banner hidden">
-        <i class="fas fa-star-of-life"></i> <span data-i18n="gardeBanner">Nous sommes de garde aujourd'hui !</span>
+        <i class="fas fa-star-of-life"></i>
+        <span data-i18n="gardeBanner">Nous sommes de garde aujourd'hui !</span>
+        &nbsp;—&nbsp;
+        <a href="tel:+212535531818" style="color:inherit;font-weight:700;">05 35 53 18 18</a>
     </div>
 
+    <!-- Floating Call Button -->
+    <a href="tel:+212535531818" class="float-call" id="float-call">
+        <i class="fas fa-phone"></i>
+        <span>05 35 53 18 18</span>
+    </a>
+
+    <!-- Header -->
     <header>
-        <div class="container header-flex">
-            <div class="logo">
-                <h1>Pharmacie <span class="gold-text">Badr El Kheir</span></h1>
-            </div>
-            <nav>
-                <a href="tel:+212535531818" class="btn-call"><i class="fas fa-phone"></i> <span data-i18n="callUs">Appelez-nous</span></a>
-                <button id="lang-toggle" class="btn-lang" onclick="toggleLanguage()"><i class="fas fa-globe"></i> <span id="current-lang">AR</span></button>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-name">Pharmacie <span>Badr El Kheir</span></div>
+                <div class="logo-sub">Lotissement Badr · Toulal · Meknès</div>
+            </a>
+            <nav class="nav-actions">
+                <a href="tel:+212535531818" class="btn-call-header">
+                    <i class="fas fa-phone"></i>
+                    <span data-i18n="callUs">Appelez-nous</span>
+                </a>
+                <button class="btn-lang" onclick="toggleLanguage()">
+                    <i class="fas fa-globe"></i>
+                    <span id="current-lang">AR</span>
+                </button>
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
+
+        <!-- Hero -->
         <section class="hero">
-            <div class="container text-center">
-                <h2 data-i18n="heroTitle">Votre santé, notre priorité au quotidien</h2>
-                <p data-i18n="heroSubtitle">Conseils experts, parapharmacie, et accompagnement personnalisé.</p>
-                <a href="#location" class="btn-primary" data-i18n="visitUs">Rendez-nous visite</a>
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Lotissement Badr, Toulal — Meknès
+                    </div>
+                    <h1 data-i18n="heroTitle">Votre santé,<br>notre priorité<br>au quotidien</h1>
+                    <p class="hero-sub" data-i18n="heroSubtitle">Conseils experts, parapharmacie, et accompagnement personnalisé.</p>
+                    <div class="hero-cta-group">
+                        <a href="tel:+212535531818" class="btn-hero-call">
+                            <i class="fas fa-phone-alt"></i>
+                            <span class="phone-num">05 35 53 18 18</span>
+                        </a>
+                        <a href="https://maps.app.goo.gl/JncfxXGN9u2rXiaF7" target="_blank" class="btn-hero-dir">
+                            <i class="fas fa-directions"></i>
+                            <span data-i18n="visitUs">Obtenir l'itinéraire</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-card">
+                    <div class="hero-hours-title">
+                        <i class="far fa-clock"></i>
+                        <span data-i18n="hoursTitle">Horaires d'Ouverture</span>
+                    </div>
+                    <div class="hero-hour-row">
+                        <span data-i18n="monFri">Lun – Ven</span>
+                        <span>09:00–13:00<br>15:30–20:30</span>
+                    </div>
+                    <div class="hero-hour-row">
+                        <span data-i18n="saturday">Samedi</span>
+                        <span>09:00–13:00</span>
+                    </div>
+                    <div class="hero-hour-row closed-day">
+                        <span data-i18n="sunday">Dimanche</span>
+                        <span data-i18n="closedText">Fermé</span>
+                    </div>
+                    <a href="tel:+212535531818" class="hero-phone-strip">
+                        <small data-i18n="callUs">Appelez-nous</small>
+                        05 35 53 18 18
+                    </a>
+                </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="about container" id="about">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2 data-i18n="aboutTitle">À Propos de Nous</h2>
-                    <p data-i18n="aboutText1">Fondée sur des valeurs d'écoute et d'empathie, la Pharmacie Badr El Kheir est votre partenaire santé de confiance. Nous nous engageons à vous fournir des soins de qualité, des conseils précis et un service confidentiel.</p>
-                    <p data-i18n="aboutText2">Dirigée par le Dr. El Mahdi Nih, notre équipe met un point d'honneur à vous accompagner dans vos traitements médicaux et votre bien-être général.</p>
+        <!-- Trust Strip -->
+        <div class="trust-strip">
+            <div class="trust-inner container">
+                <div class="trust-item">
+                    <div class="trust-num">6j/7</div>
+                    <div class="trust-label">Ouvert</div>
                 </div>
-                <div class="about-image">
-                    <!-- Headshot image -->
-                    <img src="assets/images/pharmacist.jpg" alt="Dr. El Mahdi Nih">
-                    <div class="doctor-name">Dr. El Mahdi Nih</div>
+                <div class="trust-item">
+                    <div class="trust-num">+5 ans</div>
+                    <div class="trust-label">d'expérience</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-num">Dr.</div>
+                    <div class="trust-label">Conseil Expert</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-num">∞</div>
+                    <div class="trust-label">Confidentialité</div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Parapharmacy & Services -->
-        <section class="services bg-light">
+        <!-- About -->
+        <section class="about" id="about">
             <div class="container">
-                <h2 class="text-center" data-i18n="servicesTitle">Parapharmacie & Services</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2 data-i18n="aboutTitle">À Propos<br>de Nous</h2>
+                        <p data-i18n="aboutText1">Fondée sur des valeurs d'écoute et d'empathie, la Pharmacie Badr El Kheir est votre partenaire santé de confiance. Nous nous engageons à vous fournir des soins de qualité, des conseils précis et un service confidentiel.</p>
+                        <p data-i18n="aboutText2">Dirigée par le <strong>Dr. El Mahdi Nih</strong>, notre équipe met un point d'honneur à vous accompagner dans vos traitements médicaux et votre bien-être général.</p>
+                        <a href="tel:+212535531818" class="about-cta">
+                            <i class="fas fa-phone"></i>
+                            <span data-i18n="callUs">Appelez-nous</span>
+                        </a>
+                    </div>
+                    <div class="doctor-portrait">
+                        <img src="assets/images/pharmacist.jpg" alt="Dr. El Mahdi Nih, Pharmacien">
+                        <div class="doctor-caption">
+                            <div class="doc-name">Dr. El Mahdi Nih</div>
+                            <div class="doc-title">Docteur en Pharmacie</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">Ce que nous offrons</span>
+                    <h2 data-i18n="servicesTitle">Parapharmacie &amp; Services</h2>
+                </div>
                 <div class="services-grid">
                     <div class="service-card">
-                        <i class="fas fa-spa icon"></i>
+                        <div class="service-icon"><i class="fas fa-spa"></i></div>
                         <h3 data-i18n="dermoTitle">Dermo-Cosmétique</h3>
                         <p data-i18n="dermoDesc">Un large choix de produits pour le soin de la peau, des cheveux et l'hygiène quotidienne, adaptés à tous les types de peaux.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-baby icon"></i>
-                        <h3 data-i18n="babyTitle">Espace Bébé & Maman</h3>
+                        <div class="service-icon"><i class="fas fa-baby"></i></div>
+                        <h3 data-i18n="babyTitle">Espace Bébé &amp; Maman</h3>
                         <p data-i18n="babyDesc">Laits infantiles, soins pour bébés et accompagnement pour les jeunes mamans.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-heartbeat icon"></i>
+                        <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
                         <h3 data-i18n="healthTitle">Suivi Santé</h3>
                         <p data-i18n="healthDesc">Prise de tension artérielle, conseils nutritionnels et orientation médicale par notre équipe.</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-pills icon"></i>
+                        <div class="service-icon"><i class="fas fa-pills"></i></div>
                         <h3 data-i18n="supplementsTitle">Compléments Alimentaires</h3>
                         <p data-i18n="supplementsDesc">Vitamines, minéraux et phytothérapie pour booster votre immunité et votre vitalité.</p>
                     </div>
@@ -94,37 +184,58 @@
         </section>
 
         <!-- Location & Hours -->
-        <section class="location container" id="location">
-            <h2 class="text-center" data-i18n="contactTitle">Informations Pratiques</h2>
-            <div class="contact-grid">
-                <div class="hours-card">
-                    <h3><i class="far fa-clock"></i> <span data-i18n="hoursTitle">Horaires d'Ouverture</span></h3>
-                    <ul class="hours-list">
-                        <li><span data-i18n="monFri">Lundi - Vendredi</span> <span>09:00 - 13:00 <br> 15:30 - 20:30</span></li>
-                        <li><span data-i18n="saturday">Samedi</span> <span>09:00 - 13:00</span></li>
-                        <li class="closed"><span data-i18n="sunday">Dimanche</span> <span data-i18n="closedText">Fermé</span></li>
-                    </ul>
-                    <div class="contact-info mt-2">
-                        <p><i class="fas fa-phone-alt"></i> 05 35 53 18 18</p>
-                    </div>
+        <section class="location" id="location">
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-eyebrow">Nous trouver</span>
+                    <h2 data-i18n="contactTitle">Informations Pratiques</h2>
                 </div>
-                <div class="map-card">
-                    <!-- Link to Google Maps -->
-                    <a href="https://maps.app.goo.gl/JncfxXGN9u2rXiaF7" target="_blank" class="map-link">
-                        <div class="map-placeholder">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <h3 data-i18n="openMap">Ouvrir sur Google Maps</h3>
-                            <p data-i18n="mapDesc">Cliquez ici pour obtenir l'itinéraire vers la pharmacie.</p>
+                <div class="contact-grid">
+                    <div class="hours-card">
+                        <div class="hours-card-title">
+                            <i class="far fa-clock"></i>
+                            <span data-i18n="hoursTitle">Horaires d'Ouverture</span>
                         </div>
-                    </a>
+                        <div class="hours-item">
+                            <span class="day" data-i18n="monFri">Lundi – Vendredi</span>
+                            <span class="time">09:00–13:00<br>15:30–20:30</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day" data-i18n="saturday">Samedi</span>
+                            <span class="time">09:00–13:00</span>
+                        </div>
+                        <div class="hours-item closed">
+                            <span class="day" data-i18n="sunday">Dimanche</span>
+                            <span class="time" data-i18n="closedText">Fermé</span>
+                        </div>
+                        <div class="phone-cta-block">
+                            <p data-i18n="callUs">Appelez-nous</p>
+                            <a href="tel:+212535531818">05 35 53 18 18</a>
+                        </div>
+                    </div>
+
+                    <div class="map-card">
+                        <a href="https://maps.app.goo.gl/JncfxXGN9u2rXiaF7" target="_blank" class="map-link">
+                            <div class="map-visual">
+                                <div class="map-pin"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="map-cta-text" data-i18n="openMap">Ouvrir sur Google Maps</div>
+                                <p class="map-sub" data-i18n="mapDesc">Cliquez ici pour l'itinéraire</p>
+                            </div>
+                            <div class="map-footer">
+                                <i class="fas fa-location-dot"></i>
+                                <span>Lotissement Badr, Toulal, Meknès</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer>
-        <div class="container text-center">
-            <p>&copy; <span id="year"></span> Pharmacie Badr El Kheir - Dr. El Mahdi Nih.</p>
+        <div class="container">
+            <p>&copy; <span id="year"></span> <strong>Pharmacie Badr El Kheir</strong> — Dr. El Mahdi Nih · Meknès, Maroc</p>
         </div>
     </footer>
 
