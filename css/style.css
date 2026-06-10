@@ -552,6 +552,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .para-categories { grid-template-columns: 1fr; }
 }
 
+.reminder-error { display: flex; align-items: center; gap: 0.75rem; }
+.reminder-error p { color: #ff8080; font-size: 0.88rem; }
+.fs-field-error { color: #ff8080; font-size: 0.78rem; display: block; margin-top: -0.4rem; margin-bottom: 0.25rem; min-height: 1em; }
+
 /* ── SCROLL ANIMATIONS ───────────────────────────────────── */
 .animate-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .animate-in.visible { opacity: 1; transform: translateY(0); }
