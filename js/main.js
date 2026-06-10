@@ -289,21 +289,6 @@ window.addEventListener('scroll', () => {
   if (header) header.style.boxShadow = window.scrollY > 10 ? '0 4px 20px rgba(10,37,64,0.14)' : '';
 }, { passive: true });
 
-/* ── REMINDER FORM ───────────────────────────────────────── */
-function submitReminder() {
-  const name = document.getElementById('reminder-name')?.value.trim();
-  const phone = document.getElementById('reminder-phone')?.value.trim();
-  if (!name || !phone) {
-    const t = TRANSLATIONS[currentLang];
-    alert(currentLang === 'ar' ? 'الرجاء ملء جميع الحقول' : 'Veuillez remplir tous les champs.');
-    return;
-  }
-  document.getElementById('reminder-form').style.display = 'none';
-  document.getElementById('reminder-success').style.display = 'flex';
-  // In a real implementation, this would send data to a backend
-  console.log('Reminder signup:', { name, phone });
-}
-
 /* ── MODALS ──────────────────────────────────────────────── */
 function showPrivacy() {
   document.getElementById('privacy-modal').style.display = 'flex';
