@@ -258,15 +258,21 @@
             <h3 data-fr="Rappels de renouvellement d'ordonnance" data-ar="تذكير بتجديد الوصفة الطبية">Rappels de renouvellement d'ordonnance</h3>
             <p data-fr="Vous souffrez d'une maladie chronique ? Ne manquez plus jamais votre traitement. Inscrivez-vous et nous vous appelons quand il est temps." data-ar="هل تعاني من مرض مزمن؟ لا تفوّت علاجك بعد الآن. سجّل وسنتصل بك في الوقت المناسب.">Vous souffrez d'une maladie chronique ? Ne manquez plus jamais votre traitement. Inscrivez-vous et nous vous appelons quand il est temps.</p>
           </div>
-          <div class="reminder-form" id="reminder-form">
-            <input type="text" id="reminder-name" placeholder="" class="form-input" />
-            <input type="tel" id="reminder-phone" placeholder="" class="form-input" dir="auto" />
-            <button class="btn btn-primary" onclick="submitReminder()" data-fr="M'inscrire" data-ar="التسجيل">M'inscrire</button>
-          </div>
-          <div id="reminder-success" class="reminder-success" style="display:none">
+          <div data-fs-success id="reminder-success" class="reminder-success" style="display:none">
             <span>✓</span>
             <p data-fr="Merci ! Nous vous contacterons bientôt." data-ar="شكراً! سنتصل بكم قريباً.">Merci ! Nous vous contacterons bientôt.</p>
           </div>
+          <div data-fs-error id="reminder-error" class="reminder-error" style="display:none">
+            <p data-fr="Une erreur s'est produite. Veuillez réessayer." data-ar="حدث خطأ. يرجى المحاولة مجدداً.">Une erreur s'est produite. Veuillez réessayer.</p>
+          </div>
+          <form id="reminder-form" class="reminder-form" novalidate>
+            <input type="text" id="reminder-name" name="Nom" placeholder="" class="form-input" required data-fs-field />
+            <span data-fs-error="Nom" class="fs-field-error"></span>
+            <input type="tel" id="reminder-phone" name="Téléphone" placeholder="" class="form-input" dir="auto" required data-fs-field />
+            <span data-fs-error="Téléphone" class="fs-field-error"></span>
+            <input type="hidden" name="Source" value="Rappel renouvellement – Pharmacie Badr El Kheir" />
+            <button type="submit" class="btn btn-primary" data-fs-submit-btn data-fr="M'inscrire" data-ar="التسجيل">M'inscrire</button>
+          </form>
         </div>
       </div>
     </section>
@@ -541,6 +547,11 @@
     </div>
   </div>
 
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#reminder-form', formId: 'xeewzlap' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
   <script src="js/main.js"></script>
 </body>
 </html>
