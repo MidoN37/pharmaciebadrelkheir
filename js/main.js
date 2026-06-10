@@ -90,8 +90,8 @@ function applyLanguage(lang, animate) {
   document.documentElement.dir = isAr ? 'rtl' : 'ltr';
   document.body.dir = isAr ? 'rtl' : 'ltr';
 
-  // Update lang toggle label
-  document.getElementById('lang-label').textContent = isAr ? 'ع' : 'FR';
+  // Update lang toggle — show the OTHER language so it reads as "switch to X"
+  document.getElementById('lang-label').textContent = isAr ? 'FR' : 'ع';
 
   // Translate all data-fr / data-ar elements
   document.querySelectorAll('[data-fr]').forEach(el => {
@@ -111,11 +111,14 @@ function applyLanguage(lang, animate) {
   // Update open/closed status
   updateOpenStatus();
 
+  // Update garde status
+  updateGardeStatus();
+
   // Update seasonal banner
   updateSeasonalBanner();
 
   // Update page title
-  document.title = isAr ? 'فارماسي بدر الخير | الرباط' : 'Pharmacie Badr El Kheir | Rabat';
+  document.title = isAr ? 'فارماسي بدر الخير | مكناس' : 'Pharmacie Badr El Kheir | Meknès';
 }
 
 /* ── OPEN/CLOSED STATUS ──────────────────────────────────── */
@@ -149,7 +152,31 @@ function updateOpenStatus() {
   badge.textContent = open ? t.openNow : t.closedNow;
 }
 
-/* ── SEASONAL BANNER ─────────────────────────────────────── */
+/* ── GARDE STATUS ────────────────────────────────────────── */
+// ↓↓ EDIT THIS to reflect whether you are on garde tonight ↓↓
+const IS_ON_GARDE = false; // Set to true on nights you are the on-call pharmacy
+
+function updateGardeStatus() {
+  const badge = document.getElementById('garde-status-badge');
+  const text  = document.getElementById('garde-status-text');
+  if (!badge || !text) return;
+  const isAr = currentLang === 'ar';
+  if (IS_ON_GARDE) {
+    badge.className = 'garde-status-badge garde-open';
+    badge.textContent = isAr ? 'مناوبة الليلة' : 'De garde ce soir';
+    text.textContent  = isAr
+      ? 'نحن الصيدلية المناوبة الليلة. نحن في خدمتكم.'
+      : 'Nous sommes la pharmacie de garde ce soir. Nous sommes à votre service.';
+  } else {
+    badge.className = 'garde-status-badge garde-closed';
+    badge.textContent = isAr ? 'غير مناوبة الليلة' : 'Pas de garde ce soir';
+    text.textContent  = isAr
+      ? 'لسنا في المناوبة الليلة. اتصلوا بالرقم 141 للحصول على الصيدلية المناوبة.'
+      : 'Nous ne sommes pas de garde ce soir. Appelez le 141 pour la pharmacie de garde.';
+  }
+}
+
+
 function getSeason() {
   const month = new Date().getMonth(); // 0-11
   if (month >= 2 && month <= 4) return 'spring';
@@ -309,6 +336,7 @@ document.addEventListener('keydown', (e) => {
 // Re-check every minute in case status changes while page is open
 setInterval(() => {
   updateOpenStatus();
+  updateGardeStatus();
 }, 60000);
 
 /* ── CLOSE MENU ON OUTSIDE CLICK ─────────────────────────── */
