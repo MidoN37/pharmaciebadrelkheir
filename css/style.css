@@ -559,3 +559,35 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* ── SCROLL ANIMATIONS ───────────────────────────────────── */
 .animate-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .animate-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── WHATSAPP FLOATING BUTTON ────────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  background-color: #128C7E;
+  transform: scale(1.1);
+  color: #FFF;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+}
+
+[dir="rtl"] .whatsapp-float {
+  right: auto;
+  left: 30px;
+}
