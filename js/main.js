@@ -154,7 +154,7 @@ function updateOpenStatus() {
 
 /* ── GARDE STATUS ────────────────────────────────────────── */
 // ↓↓ EDIT THIS to reflect whether you are on garde tonight ↓↓
-const IS_ON_GARDE = false; // Set to true on nights you are the on-call pharmacy
+const IS_ON_GARDE = true; // Set to true on nights you are the on-call pharmacy
 
 function updateGardeStatus() {
   const badge = document.getElementById('garde-status-badge');
